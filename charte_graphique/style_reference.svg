@@ -1,0 +1,128 @@
+<svg viewBox="0 0 900 555" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" role="img">
+  <title>Charte graphique — planche de reference</title>
+  <desc>Reference visuelle de la charte des figures : couleurs d'entites, tints de couches, semantique DE, rampes sequentielle et divergente, echelle typographique et specs des marques.</desc>
+  <defs>
+    <linearGradient id="seqblue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#cde2fb"/><stop offset="0.25" stop-color="#86b6ef"/>
+      <stop offset="0.5" stop-color="#3987e5"/><stop offset="0.72" stop-color="#1c5cab"/>
+      <stop offset="1" stop-color="#0d366b"/>
+    </linearGradient>
+    <linearGradient id="divbwr" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2a78d6"/><stop offset="0.28" stop-color="#8fb4e6"/>
+      <stop offset="0.5" stop-color="#f0efec"/><stop offset="0.72" stop-color="#e79596"/>
+      <stop offset="1" stop-color="#d62728"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="900" height="555" fill="#ffffff"/>
+  <text x="30" y="34" font-size="19" font-weight="700" fill="#0b0b0b">Charte graphique — planche de référence</text>
+  <text x="30" y="52" font-size="11" fill="#52514e">FC = Bergmann déplacées · une entité = une couleur · palette CVD (ΔE 24,2) · <tspan font-weight="700" fill="#8f1414">LISIBILITÉ D'ABORD : texte gros, lisible réduit à 50 %</tspan></text>
+  <line x1="30" y1="62" x2="870" y2="62" stroke="#e1e0d9" stroke-width="1"/>
+
+  <!-- ============ ENTITY COLOURS ============ -->
+  <text x="30" y="84" font-size="12.5" font-weight="700" fill="#0b0b0b">1 · Entités (types / groupes) — catégoriel</text>
+
+  <!-- chip generator, 9 chips -->
+  <g font-size="10">
+    <!-- BG -->
+    <rect x="30"  y="94" width="86" height="30" rx="4" fill="#2a78d6"/>
+    <text x="73"  y="113" text-anchor="middle" fill="#fff" font-weight="700">BG</text>
+    <text x="73"  y="137" text-anchor="middle" fill="#52514e" font-size="9">#2a78d6</text>
+    <!-- Bergmann_oth * -->
+    <rect x="124" y="94" width="86" height="30" rx="4" fill="#1baf7a" stroke="#333" stroke-width="1"/>
+    <text x="167" y="113" text-anchor="middle" fill="#0b0b0b" font-weight="700">Bergmann*</text>
+    <text x="167" y="137" text-anchor="middle" fill="#52514e" font-size="9">#1baf7a</text>
+    <!-- Astro_NT * -->
+    <rect x="218" y="94" width="86" height="30" rx="4" fill="#eda100" stroke="#333" stroke-width="1"/>
+    <text x="261" y="113" text-anchor="middle" fill="#0b0b0b" font-weight="700">Astro-NT*</text>
+    <text x="261" y="137" text-anchor="middle" fill="#52514e" font-size="9">#eda100</text>
+    <!-- Astro_CB -->
+    <rect x="312" y="94" width="86" height="30" rx="4" fill="#008300"/>
+    <text x="355" y="113" text-anchor="middle" fill="#fff" font-weight="700">Astro-CB</text>
+    <text x="355" y="137" text-anchor="middle" fill="#52514e" font-size="9">#008300</text>
+    <!-- Purkinje -->
+    <rect x="406" y="94" width="86" height="30" rx="4" fill="#4a3aa7"/>
+    <text x="449" y="113" text-anchor="middle" fill="#fff" font-weight="700">Purkinje</text>
+    <text x="449" y="137" text-anchor="middle" fill="#52514e" font-size="9">#4a3aa7</text>
+    <!-- FC -->
+    <rect x="500" y="94" width="86" height="30" rx="4" fill="#d62728"/>
+    <text x="543" y="113" text-anchor="middle" fill="#fff" font-weight="700">FC</text>
+    <text x="543" y="137" text-anchor="middle" fill="#52514e" font-size="9">#d62728</text>
+    <!-- Granule * -->
+    <rect x="594" y="94" width="86" height="30" rx="4" fill="#e87ba4" stroke="#333" stroke-width="1"/>
+    <text x="637" y="113" text-anchor="middle" fill="#0b0b0b" font-weight="700">Granule*</text>
+    <text x="637" y="137" text-anchor="middle" fill="#52514e" font-size="9">#e87ba4</text>
+    <!-- MLI -->
+    <rect x="688" y="94" width="86" height="30" rx="4" fill="#eb6834"/>
+    <text x="731" y="113" text-anchor="middle" fill="#fff" font-weight="700">MLI</text>
+    <text x="731" y="137" text-anchor="middle" fill="#52514e" font-size="9">#eb6834</text>
+    <!-- Oligo -->
+    <rect x="782" y="94" width="86" height="30" rx="4" fill="#898781"/>
+    <text x="825" y="113" text-anchor="middle" fill="#fff" font-weight="700">Oligo</text>
+    <text x="825" y="137" text-anchor="middle" fill="#52514e" font-size="9">#898781</text>
+  </g>
+  <text x="30" y="153" font-size="9.5" fill="#8f1414">* relief : &lt; 3:1 sur blanc → contour foncé 0,5 pt + label obligatoires.  FC/BG/Bergmann = même type, groupes distincts.</text>
+
+  <!-- ============ LAYERS + SEMANTIC ============ -->
+  <text x="30" y="182" font-size="12.5" font-weight="700" fill="#0b0b0b">2 · Couches (fonds muets)</text>
+  <g font-size="9.5">
+    <rect x="30"  y="192" width="96" height="26" fill="#e9f1fb" stroke="#cfd4da"/><text x="78" y="209" text-anchor="middle" fill="#333">ML #e9f1fb</text>
+    <rect x="132" y="192" width="96" height="26" fill="#fdefd8" stroke="#cfd4da"/><text x="180" y="209" text-anchor="middle" fill="#333">PCL #fdefd8</text>
+    <rect x="234" y="192" width="96" height="26" fill="#efe9f7" stroke="#cfd4da"/><text x="282" y="209" text-anchor="middle" fill="#333">GCL #efe9f7</text>
+    <rect x="336" y="192" width="96" height="26" fill="#eceef1" stroke="#cfd4da"/><text x="384" y="209" text-anchor="middle" fill="#333">WM #eceef1</text>
+  </g>
+
+  <text x="470" y="182" font-size="12.5" font-weight="700" fill="#0b0b0b">3 · Sémantique (DE)</text>
+  <g font-size="9.5">
+    <rect x="470" y="192" width="70" height="26" fill="#d62728"/><text x="505" y="209" text-anchor="middle" fill="#fff">↑ FC</text>
+    <rect x="546" y="192" width="70" height="26" fill="#2a78d6"/><text x="581" y="209" text-anchor="middle" fill="#fff">↑ BG</text>
+    <rect x="622" y="192" width="86" height="26" fill="#e8a13a"/><text x="665" y="209" text-anchor="middle" fill="#0b0b0b">contam ✕</text>
+    <rect x="714" y="192" width="70" height="26" fill="#b8b6b0"/><text x="749" y="209" text-anchor="middle" fill="#fff">ns</text>
+    <rect x="790" y="192" width="78" height="26" fill="#5a5a57"/><text x="829" y="209" text-anchor="middle" fill="#fff">équiv.</text>
+  </g>
+
+  <!-- ============ SEQUENTIAL + DIVERGING ============ -->
+  <text x="30" y="248" font-size="12.5" font-weight="700" fill="#0b0b0b">4 · Séquentiel (magnitude) &amp; divergent (log2FC)</text>
+  <rect x="30" y="258" width="390" height="26" fill="url(#seqblue)" stroke="#cfd4da"/>
+  <text x="30" y="298" font-size="9.5" fill="#52514e">séquentiel · 1 teinte clair→foncé (heatmap corrélation)</text>
+  <rect x="478" y="258" width="390" height="26" fill="url(#divbwr)" stroke="#cfd4da"/>
+  <text x="478" y="298" font-size="9.5" fill="#52514e">divergent · BG ↔ gris ↔ FC (log2FC)</text>
+
+  <!-- ============ TYPOGRAPHY ============ -->
+  <line x1="30" y1="316" x2="440" y2="316" stroke="#e1e0d9"/>
+  <text x="30" y="338" font-size="12.5" font-weight="700" fill="#0b0b0b">5 · Typographie (Arial, tailles finales — GROS)</text>
+  <text x="30" y="363" font-size="13"  font-weight="700" fill="#0b0b0b">a</text>
+  <text x="48" y="363" font-size="12" fill="#52514e">lettre de panneau — 12 pt gras</text>
+  <text x="30" y="384" font-size="11"  fill="#0b0b0b">Titre d'axe — 9 pt</text>
+  <text x="30" y="403" font-size="10"  fill="#0b0b0b" style="font-variant-numeric:tabular-nums">Graduation / légende — 8 pt  0 25 50 75 100</text>
+  <text x="30" y="421" font-size="10"  fill="#0b0b0b">Annotation 8 pt · gène <tspan font-style="italic">Gfap</tspan> · <tspan font-style="italic">P</tspan> = 2,5 × 10⁻⁸</text>
+  <text x="30" y="437" font-size="8.5" fill="#8f1414">minimum absolu 7 pt — rien de plus petit</text>
+
+  <!-- ============ MARKS ============ -->
+  <line x1="470" y1="316" x2="870" y2="316" stroke="#e1e0d9"/>
+  <text x="470" y="338" font-size="12.5" font-weight="700" fill="#0b0b0b">6 · Marques</text>
+  <!-- bars with 2px gap + outline -->
+  <g stroke="#333" stroke-width="0.7">
+    <rect x="478" y="392" width="20" height="48" fill="#d62728"/>
+    <rect x="500" y="404" width="20" height="36" fill="#2a78d6"/>
+    <rect x="522" y="380" width="20" height="60" fill="#1baf7a"/>
+  </g>
+  <text x="478" y="454" font-size="8.5" fill="#52514e">barres : contour 0,5 pt, écart 2 px</text>
+  <!-- scatter ns vs highlight -->
+  <circle cx="600" cy="360" r="2.4" fill="#b8b6b0"/><circle cx="610" cy="368" r="2.4" fill="#b8b6b0"/>
+  <circle cx="620" cy="356" r="2.4" fill="#b8b6b0"/><circle cx="632" cy="372" r="2.4" fill="#b8b6b0"/>
+  <circle cx="616" cy="382" r="4" fill="#d62728" stroke="#333" stroke-width="0.7"/>
+  <text x="600" y="404" font-size="8.5" fill="#52514e">points ns gris · mis en avant contour</text>
+  <!-- line + error bar -->
+  <polyline points="700,375 720,360 740,368 760,352" fill="none" stroke="#2a78d6" stroke-width="2"/>
+  <line x1="770" y1="345" x2="770" y2="385" stroke="#333" stroke-width="0.7"/>
+  <line x1="766" y1="345" x2="774" y2="345" stroke="#333" stroke-width="0.7"/>
+  <line x1="766" y1="385" x2="774" y2="385" stroke="#333" stroke-width="0.7"/>
+  <text x="700" y="404" font-size="8.5" fill="#52514e">ligne 2 pt · barre d'erreur (préciser IC/SEM)</text>
+  <!-- contamination x + no dual axis note -->
+  <text x="478" y="480" font-size="9" fill="#8f1414">✕ contamination = marqueur + couleur (jamais couleur seule)</text>
+  <text x="478" y="496" font-size="9" fill="#8f1414">✗ jamais de double axe Y · texte ≥ 7 pt · traits ≥ 0,75 pt · marqueurs ≥ 4 pt</text>
+
+  <line x1="30" y1="516" x2="870" y2="516" stroke="#e1e0d9"/>
+  <text x="30" y="536" font-size="9.5" fill="#898781" font-style="italic">Source de vérité : charte_graphique/palette.py + article.mplstyle — aucune couleur/taille en dur dans les scripts.</text>
+</svg>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Validation manuelle BG_ML — swipe</title>
+<style>
+:root{--bg:#0f1115;--fg:#e8e8e8;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,Segoe UI,Arial,sans-serif;}
+.wrap{display:flex;gap:18px;max-width:1180px;margin:14px auto;padding:0 14px;flex-wrap:wrap}
+.left{flex:1 1 720px}
+.right{flex:1 1 240px;min-width:240px}
+.cvs{display:flex;gap:12px;flex-wrap:wrap}
+figure{margin:0}
+figcaption{font-size:12px;color:#9ab;margin:4px 2px}
+canvas{background:#fff;border-radius:10px;display:block;box-shadow:0 2px 12px #0008}
+h1{font-size:17px;margin:4px 0 10px}
+.bar{height:10px;background:#222;border-radius:6px;overflow:hidden;margin:8px 0}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,#d62728,#ff7f0e)}
+.btns{display:flex;gap:10px;margin-top:12px}
+button{flex:1;padding:14px;border:0;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;color:#fff}
+.no{background:#b23}.maybe{background:#b80}.yes{background:#2a8}
+button.ghost{background:#333;font-weight:500;flex:0 0 auto;padding:10px 12px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:13px;margin-top:8px}
+.kv b{color:#9fd}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:12px;font-weight:700}
+.PASS{background:#163;color:#9f9}.rescue{background:#530;color:#fc8}
+.legend{font-size:12px;color:#aab;margin-top:10px;line-height:1.7}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;vertical-align:middle;margin-right:4px;border:1px solid #999}
+.counts{font-size:13px;margin-top:10px}.counts span{margin-right:12px}
+small{color:#889}
+a.btnlink{display:inline-block;margin-top:8px;color:#9cf}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="left">
+    <h1>Validation BG_ML — <span id="dsname"></span></h1>
+    <div class="cvs">
+      <figure><canvas id="cvFull" width="380" height="380"></canvas><figcaption>Coupe entière (cervelet) — ★ = candidat</figcaption></figure>
+      <figure><canvas id="cvZoom" width="380" height="380"></canvas><figcaption>Zoom local — couches en fond</figcaption></figure>
+    </div>
+    <div class="btns">
+      <button class="no"    onclick="decide('no')">✗ Non (←)</button>
+      <button class="maybe" onclick="decide('maybe')">? Peut-être (↑)</button>
+      <button class="yes"   onclick="decide('yes')">✓ Oui (→)</button>
+    </div>
+    <div class="btns">
+      <button class="ghost" onclick="prev()">◀ Précédent (Retour)</button>
+      <button class="ghost" onclick="nextUndecided()">Prochain non-décidé ▶</button>
+      <label class="ghost" style="display:flex;align-items:center;gap:6px">zoom <input id="zoom" type="range" min="0.5" max="3" step="0.1" value="1" oninput="drawZoom()"></label>
+    </div>
+  </div>
+  <div class="right">
+    <div class="bar"><i id="prog"></i></div>
+    <div id="pos"></div>
+    <div class="counts" id="counts"></div>
+    <div class="kv" id="info"></div>
+    <div class="legend">
+      <b>Bandes (fond) :</b>
+      <span class="dot" style="background:#cfe8f3"></span>ML
+      <span class="dot" style="background:#e0cdee"></span>GCL
+      <span class="dot" style="background:#dde1e5"></span>WM<br>
+      <b>Lignes :</b>
+      <span class="dot" style="background:#e8894a"></span>cellules de Purkinje (= la PCL)
+      <span class="dot" style="background:#15348f"></span>BG_PCL<br>
+      ★ rouge = soma candidat BG_ML. La PCL est la <i>ligne</i> orange entre ML et GCL.<br>
+      Rectangle pointillé sur la coupe entière = la zone du zoom.
+    </div>
+    <div style="margin-top:14px">
+      <button class="ghost" onclick="exportCSV()">⬇ Exporter les décisions (CSV)</button>
+      <a class="btnlink" href="#" onclick="resetAll();return false">réinitialiser</a>
+    </div>
+    <p><small>Sauvegarde auto. Raccourcis : ←/N · ↑/M · →/Y · Retour=annuler. « Oui » si le ★ est un soma dans la ML (bleu), au-dessus de la PCL (orange), hors amas de contamination.</small></p>
+  </div>
+</div>
+<script src="swipe_zhuang.js"></script>
+<script>
+const KEY="bgml_swipe_decisions_v3seg";
+let DATA=null, i=0, dec={};
+try{dec=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){dec={}}
+
+// region palette (0=ML, 1=GCL, 2=WM). PCL is NOT a region: it is the Purkinje line drawn on top.
+const RFILL={0:[207,232,243],1:[224,205,238],2:[221,225,229],3:[250,224,200]}; // ML/GCL/WM/PCL band
+const RDOT ={0:"#9cc6e6",1:"#c4a3da",2:"#aab2bb",3:"#e0b483"};
+const C_PURK="#e8894a", C_BGPCL="#15348f";
+
+function boot(d){DATA=d;document.getElementById("dsname").textContent=d.meta.dataset+" (n="+d.meta.n+")";i=firstUndecided();render();}
+function firstUndecided(){for(let k=0;k<DATA.cards.length;k++)if(!dec[DATA.cards[k].id])return k;return 0;}
+function nextUndecided(){for(let k=i+1;k<DATA.cards.length;k++)if(!dec[DATA.cards[k].id]){i=k;return render();}i=Math.min(i+1,DATA.cards.length-1);render();}
+function prev(){i=Math.max(0,i-1);render();}
+function save(){localStorage.setItem(KEY,JSON.stringify(dec));}
+function decide(v){dec[DATA.cards[i].id]=v;save();if(i<DATA.cards.length-1){i++;render();}else render();}
+function resetAll(){if(confirm("Effacer toutes les décisions ?")){dec={};save();i=0;render();}}
+
+function drawStar(x,cx,cy,r){x.fillStyle="#d62728";x.strokeStyle="#000";x.lineWidth=1.2;x.beginPath();
+  for(let k=0;k<10;k++){const a=Math.PI/5*k-Math.PI/2;const rr=k%2?r*0.45:r;x.lineTo(cx+rr*Math.cos(a),cy+rr*Math.sin(a));}
+  x.closePath();x.fill();x.stroke();}
+
+function drawFull(){
+  const c=DATA.cards[i], S=DATA.sections[c.section];
+  const cv=document.getElementById("cvFull"), x=cv.getContext("2d"); const W=cv.width,H=cv.height;
+  x.fillStyle="#fff";x.fillRect(0,0,W,H);
+  const pad=12, spanx=S.xmax-S.xmin, spany=S.ymax-S.ymin, sc=Math.min((W-2*pad)/spanx,(H-2*pad)/spany);
+  const ox=(W-spanx*sc)/2, oy=(H-spany*sc)/2;
+  const MX=v=>ox+(v-S.xmin)*sc, MY=v=>H-(oy+(v-S.ymin)*sc);   // flip y
+  // normal cells first (region-coloured), then the Purkinje line on top
+  for(const cell of S.cells){if(cell[3]!==0)continue;x.beginPath();x.fillStyle=RDOT[cell[2]]||"#ddd";x.arc(MX(cell[0]),MY(cell[1]),1.1,0,7);x.fill();}
+  for(const cell of S.cells){if(cell[3]===1){x.beginPath();x.fillStyle=C_PURK;x.arc(MX(cell[0]),MY(cell[1]),1.8,0,7);x.fill();}}
+  for(const cell of S.cells){if(cell[3]===2){x.beginPath();x.fillStyle=C_BGPCL;x.arc(MX(cell[0]),MY(cell[1]),1.8,0,7);x.fill();}}
+  // zoom window rectangle
+  const r=DATA.meta.zoom_um/1000*sc;
+  x.strokeStyle="#111";x.setLineDash([5,4]);x.lineWidth=1.4;
+  x.strokeRect(MX(c.cx)-r,MY(c.cy)-r,2*r,2*r);x.setLineDash([]);
+  drawStar(x,MX(c.cx),MY(c.cy),9);
+}
+
+function drawZoom(){
+  const c=DATA.cards[i], S=DATA.sections[c.section];
+  const cv=document.getElementById("cvZoom"), x=cv.getContext("2d"); const W=cv.width,H=cv.height;
+  x.fillStyle="#fff";x.fillRect(0,0,W,H);
+  const zoom=parseFloat(document.getElementById("zoom").value);
+  const radmm=DATA.meta.zoom_um/1000/zoom, sc=(W/2-8)/radmm;
+  // local cells (relative to candidate)
+  const loc=[];
+  for(const cell of S.cells){const dx=cell[0]-c.cx, dy=cell[1]-c.cy;
+    if(Math.abs(dx)<=radmm*1.1 && Math.abs(dy)<=radmm*1.1) loc.push([dx*sc,-dy*sc,cell[2],cell[3]]);}
+  // region field (k-NN majority fill -> clean bands)
+  const B=6, maxd=70/1000*sc, K=9;
+  const img=x.createImageData(W,H), D=img.data;
+  for(let py=0;py<H;py+=B)for(let px=0;px<W;px+=B){
+    const qx=px+B/2-W/2, qy=py+B/2-H/2;
+    // K nearest, majority region
+    let nd=[Infinity,Infinity,Infinity,Infinity,Infinity,Infinity,Infinity,Infinity,Infinity], nr=new Array(K).fill(-1);
+    for(let k=0;k<loc.length;k++){const ddx=loc[k][0]-qx,ddy=loc[k][1]-qy,d=ddx*ddx+ddy*ddy;
+      if(d<nd[K-1]){let p=K-1;while(p>0&&nd[p-1]>d){nd[p]=nd[p-1];nr[p]=nr[p-1];p--;}nd[p]=d;nr[p]=loc[k][2];}}
+    if(nd[0]>maxd*maxd||nr[0]<0)continue;
+    const cnt=[0,0,0,0];for(let p=0;p<K;p++)if(nr[p]>=0)cnt[nr[p]]++;
+    let bl=0;for(let q=1;q<4;q++)if(cnt[q]>cnt[bl])bl=q;
+    const col=RFILL[bl]||RFILL[0];
+    for(let yy=py;yy<Math.min(py+B,H);yy++)for(let xx=px;xx<Math.min(px+B,W);xx++){const o=(yy*W+xx)*4;D[o]=col[0];D[o+1]=col[1];D[o+2]=col[2];D[o+3]=240;}
+  }
+  x.putImageData(img,0,0);
+  // cells: faint region dots, then Purkinje line, then BG_PCL
+  for(const n of loc){if(n[3]!==0)continue;x.fillStyle=RDOT[n[2]]||"#bbb";x.globalAlpha=0.45;x.beginPath();x.arc(W/2+n[0],H/2+n[1],1.6,0,7);x.fill();x.globalAlpha=1;}
+  for(const n of loc){if(n[3]===1){x.fillStyle=C_PURK;x.beginPath();x.arc(W/2+n[0],H/2+n[1],3.4,0,7);x.fill();}}
+  for(const n of loc){if(n[3]===2){x.fillStyle=C_BGPCL;x.beginPath();x.arc(W/2+n[0],H/2+n[1],3.2,0,7);x.fill();}}
+  x.strokeStyle="#888";x.beginPath();x.moveTo(W/2-9,H/2);x.lineTo(W/2+9,H/2);x.moveTo(W/2,H/2-9);x.lineTo(W/2,H/2+9);x.stroke();
+  drawStar(x,W/2,H/2,9);
+  const sb=100/1000*sc;x.strokeStyle="#222";x.lineWidth=2;x.beginPath();x.moveTo(12,H-14);x.lineTo(12+sb,H-14);x.stroke();
+  x.fillStyle="#222";x.font="11px sans-serif";x.fillText("100 µm",12,H-20);
+}
+
+function render(){
+  if(!DATA)return; const c=DATA.cards[i];
+  drawFull(); drawZoom();
+  const ct=c.conf>=0.7?"PASS":(c.conf>=0.5?"rescue":"rescue");
+  document.getElementById("pos").innerHTML="Candidat BG_ML <b>"+(i+1)+"</b> / "+DATA.cards.length+
+    " &nbsp; <span class='tag "+ct+"'>confiance "+c.conf+"</span> "+
+    "&nbsp; "+(dec[c.id]?("→ <b>"+dec[c.id]+"</b>"):"<i>(non décidée)</i>");
+  document.getElementById("prog").style.width=(100*Object.keys(dec).length/DATA.cards.length)+"%";
+  const v=Object.values(dec);
+  document.getElementById("counts").innerHTML=
+    "<span style='color:#5db'>oui: "+v.filter(a=>a=='yes').length+"</span>"+
+    "<span style='color:#fc8'>peut-être: "+v.filter(a=>a=='maybe').length+"</span>"+
+    "<span style='color:#f88'>non: "+v.filter(a=>a=='no').length+"</span>"+
+    "<span>décidé: "+v.length+"/"+DATA.cards.length+"</span>";
+  document.getElementById("info").innerHTML=
+    "<b>section</b><span>"+c.section+"</span><b>animal</b><span>"+c.animal+"</span>"+
+    "<b>confiance segm.</b><span>"+c.conf+"</span>"+
+    "<b>distance à la PCL</b><span>"+c.dist_pcl+" µm</span>"+
+    "<b>support Purkinje</b><span>"+c.support+"</span>";
+}
+function exportCSV(){
+  let rows=["cell_label,dataset,section,animal,confidence,dist_to_PCL_um,decision"];
+  for(const c of DATA.cards) rows.push([c.id,c.dataset,c.section,c.animal,c.conf,c.dist_pcl,dec[c.id]||""].join(","));
+  const b=new Blob([rows.join("\n")],{type:"text/csv"});const a=document.createElement("a");
+  a.href=URL.createObjectURL(b);a.download="bgml_decisions_zhuang.csv";a.click();
+}
+document.addEventListener("keydown",e=>{
+  if(e.key==="ArrowRight"||e.key.toLowerCase()==="y")decide("yes");
+  else if(e.key==="ArrowLeft"||e.key.toLowerCase()==="n")decide("no");
+  else if(e.key==="ArrowUp"||e.key.toLowerCase()==="m")decide("maybe");
+  else if(e.key==="Backspace"){e.preventDefault();prev();}
+});
+if(window.SWIPE_DATA){boot(window.SWIPE_DATA);}
+else{fetch("swipe_zhuang.json").then(r=>r.json()).then(boot).catch(()=>document.getElementById("pos").innerHTML="Erreur de chargement.");}
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+group,bg_score_med,nt_score_med
+ref BG-PCL,0.44,-0.37
+ref AstroNT-WM,-0.43,0.39
+ref CB-GCL,-0.21,0.16
+census ML-Bergmann,0.43,-0.33
+census ML-NT-border,-0.33,0.22
+census ML-NT-interior,-0.3,0.16
+census ML-CB,-0.11,0.03

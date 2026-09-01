@@ -1,0 +1,4 @@
+dataset,fc_n,confident_bg_n,fc_share_pct,depth_n,depth_scope,depth_median_um,depth_min_um,depth_max_um,map_section,map_fc_n,map_bg_n,fc_source,bg_source,depth_source
+zhuang,362,6084,5.615885820663977,362,all validated FC,91.2,45.3,761.215157118437,Zhuang-ABCA-3.005,17,268,validated_analysis/cell_sets.json,validated_analysis/cell_sets.json,comparison/tables/robust_layers_zhuang.parquet
+hao,89,7230,1.2160131165459762,89,all active FC (Mouse 1),86.0,50.0,360.0,Mouse1_T176,12,118,swipe_validation/fc_decisions_hao.csv (Mouse1),layer_segmentation/BG_assignments_all.csv (Mouse1),swipe_validation/fc_decisions_hao.csv (Mouse1)
+suyama,44,1823,2.3567220139260847,44,all purity-gated FC,43.3348921380052,31.3461862895775,135.884020873729,Adult,44,1823,results/tables/suyama_fc_gate.json,adult_bergmann_laminar_purkinje.csv minus 73 manual yes-calls,results/tables/adult_bergmann_laminar_purkinje.csv

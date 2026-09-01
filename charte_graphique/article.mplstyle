@@ -1,0 +1,72 @@
+# Article figure style — matplotlib rcParams.
+# Lives at 8_Transcriptomic_comparison_datasets/charte_graphique/ (shared by all datasets).
+# From a dataset subfolder script: plt.style.use(os.path.join(os.path.dirname(__file__),"..","charte_graphique","article.mplstyle"))
+# Sizes are set for figures DRAWN AT FINAL PRINT SIZE (no post-scaling).
+# PRINCIPLE (see STYLE_GUIDE §0): legibility-first — LARGE text, THICK lines, so the
+# figure stays readable when shrunk. Nothing below 7 pt / 0.75 pt / 4 pt marker.
+
+# --- font (large, legibility-first) ---
+font.family:        sans-serif
+font.sans-serif:    Arial, Helvetica, Liberation Sans, DejaVu Sans
+font.size:          8.0
+axes.titlesize:     10.0
+axes.labelsize:     9.0
+xtick.labelsize:    8.0
+ytick.labelsize:    8.0
+legend.fontsize:    8.0
+figure.titlesize:   12.0
+
+# --- figure / export ---
+figure.dpi:         150
+savefig.dpi:        600
+savefig.bbox:       tight
+savefig.pad_inches: 0.02
+figure.facecolor:   white
+savefig.facecolor:  white
+svg.fonttype:       none
+pdf.fonttype:       42
+ps.fonttype:        42
+
+# --- axes / spines (top+right removed) ---
+axes.spines.top:    False
+axes.spines.right:  False
+axes.edgecolor:     "#c3c2b7"
+axes.linewidth:     1.0
+axes.titleweight:   bold
+axes.titlepad:      4.0
+axes.labelcolor:    "#0b0b0b"
+axes.labelpad:      3.0
+axes.facecolor:     white
+
+# --- ticks (outward, thick enough to survive shrinking) ---
+xtick.direction:    out
+ytick.direction:    out
+xtick.major.size:   3.0
+ytick.major.size:   3.0
+xtick.major.width:  1.0
+ytick.major.width:  1.0
+xtick.color:        "#52514e"
+ytick.color:        "#52514e"
+
+# --- grid (hairline, off by default; enable per-axes if needed) ---
+axes.grid:          False
+grid.color:         "#e1e0d9"
+grid.linewidth:     0.75
+grid.alpha:         1.0
+
+# --- lines / markers (thick lines, big markers) ---
+lines.linewidth:    2.0
+lines.markersize:   6.0
+lines.markeredgewidth: 0.75
+
+# --- legend (frameless) ---
+legend.frameon:     False
+legend.handlelength: 1.2
+legend.handletextpad: 0.5
+legend.columnspacing: 1.0
+legend.borderaxespad: 0.4
+
+# --- misc ---
+axes.autolimit_mode: round_numbers
+axes.xmargin:       0.02
+axes.ymargin:       0.02

@@ -1,0 +1,24 @@
+dataset,gene,log2FC,padj,direction,class,canonical_included,interpretation
+zhuang,Tnc,-0.5094566941261292,2.1007023396323607e-08,up_BG,bergmann_program,True,canonical matched DE
+zhuang,Ntsr2,0.3153079748153686,0.0001178329487879,up_FC,astro_lean,True,canonical matched DE
+zhuang,Zeb2,0.2610705494880676,0.0183177097011094,up_FC,other,True,canonical matched DE
+zhuang,Gfap,0.3676527440547943,1.2405543188690231e-06,up_FC,astro_lean,True,canonical matched DE
+zhuang,Aqp4,0.3026748299598694,0.0005739080553143,up_FC,astro_lean,True,canonical matched DE
+zhuang,Fam107a,0.3491313755512237,2.7024981173551734e-06,up_FC,other,True,canonical matched DE
+zhuang,Calb1,-0.5608943700790405,1.2953170497510194e-09,up_BG,contam_Purkinje,True,canonical matched DE
+zhuang,Car8,-0.3386112451553345,4.0989952829497266e-05,up_BG,contam_Purkinje,True,canonical matched DE
+zhuang,Agt,0.3078941106796264,0.0003511980122617,up_FC,astro_lean,True,canonical matched DE
+hao,AY036118,1.4481831319264111,0.0188536701885367,up_FC,technical,False,audit-only: no coherent FC identity
+hao,Pcp4,-0.7008719171254114,0.0188536701885367,up_BG,contam_Purkinje,False,audit-only: no coherent FC identity
+hao,Bc1,1.5198693365016105,0.0188536701885367,up_FC,technical,False,audit-only: no coherent FC identity
+hao,Malat1,1.3200822471021,0.0188536701885367,up_FC,technical,False,audit-only: no coherent FC identity
+hao,Osbpl1a,1.9787465513913889,0.0188536701885367,up_FC,other,False,audit-only: no coherent FC identity
+hao,Igsf5,-1.2974642353762391,0.0188536701885367,up_BG,other,False,audit-only: no coherent FC identity
+hao,Dbi,-1.0396314646299327,0.0188536701885367,up_BG,other,False,audit-only: no coherent FC identity
+hao,Car8,-1.5139004608711737,0.0188536701885367,up_BG,contam_Purkinje,False,audit-only: no coherent FC identity
+hao,Mt1,-0.5574900526955435,0.0188536701885367,up_BG,other,False,audit-only: no coherent FC identity
+hao,Calb1,-1.3099506150595968,0.0261050817995123,up_BG,contam_Purkinje,False,audit-only: no coherent FC identity
+hao,Pcdh9,1.9398619887396464,0.0261050817995123,up_FC,other,False,audit-only: no coherent FC identity
+hao,Grid2,1.4781885435427835,0.0261050817995123,up_FC,contam_Purkinje,False,audit-only: no coherent FC identity
+hao,mt-Nd4,0.5689326284808089,0.0261050817995123,up_FC,technical,False,audit-only: no coherent FC identity
+hao,Slc24a2,1.7425063102719989,0.0484808661990943,up_FC,other,False,audit-only: no coherent FC identity

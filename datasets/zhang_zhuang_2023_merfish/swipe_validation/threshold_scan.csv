@@ -1,0 +1,20 @@
+# (A) purity vs distance threshold (gold-label validation rate)
+threshold_um,n_candidates,n_confirmed,purity,pct_of_gold_kept
+45,240,190,0.792,100.0
+50,187,160,0.856,84.2
+55,157,141,0.898,74.2
+60,119,107,0.899,56.3
+65,93,84,0.903,44.2
+70,77,71,0.922,37.4
+80,56,51,0.911,26.8
+90,44,42,0.955,22.1
+100,31,31,1.0,16.3
+120,21,21,1.0,11.1
+150,4,4,1.0,2.1
+
+# (B) extra un-validated cells re-admitted if the 45um gate is lowered
+band_um,n_ambiguous_readmitted,cumulative_extra_if_gate,cumulative_extra_cells
+"[30,45)",232,30,232
+"[20,30)",365,20,597
+"[15,20)",448,15,1045
+"[8,15)",1241,8,2286

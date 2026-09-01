@@ -1,0 +1,137 @@
+{
+  "Zhuang2023": {
+    "PCL": [
+      "Calb1",
+      "Car8",
+      "Homer3"
+    ],
+    "ML": [
+      "Kit",
+      "Lypd6",
+      "Nxph1",
+      "Cxcl14",
+      "Grm8",
+      "Prkcd",
+      "Nxph2"
+    ],
+    "GCL": [
+      "Gabra6",
+      "Barhl1",
+      "Zic1",
+      "Zic2",
+      "Etv1"
+    ],
+    "WM": [
+      "Mog"
+    ],
+    "Astroglia": [
+      "Aldh1l1",
+      "Sox9",
+      "Gja1",
+      "Aqp4",
+      "Hopx",
+      "Gpr37l1",
+      "Ednrb"
+    ]
+  },
+  "Hao2024": {
+    "PCL": [
+      "Pcp2",
+      "Calb1",
+      "Car8",
+      "Itpr1",
+      "Grid2",
+      "Aldoc",
+      "Prkcg",
+      "Homer3"
+    ],
+    "ML": [
+      "Kit",
+      "Lypd6",
+      "Sorcs3",
+      "Nxph1",
+      "Cxcl14",
+      "Grm8",
+      "Prkcd",
+      "Nxph2"
+    ],
+    "GCL": [
+      "Gabra6",
+      "Neurod1",
+      "Barhl1",
+      "Zic1",
+      "Zic2",
+      "Rbfox3",
+      "Cadps2",
+      "Etv1"
+    ],
+    "WM": [
+      "Mbp",
+      "Plp1",
+      "Mog",
+      "Mag",
+      "Cnp"
+    ],
+    "Astroglia": [
+      "Aldh1l1",
+      "Sox9",
+      "Slc1a3",
+      "Slc1a2",
+      "S100b",
+      "Gja1",
+      "Gjb6",
+      "Glul",
+      "Aqp4",
+      "Fabp7",
+      "Hopx",
+      "Gpr37l1",
+      "Ednrb",
+      "Notch2"
+    ]
+  },
+  "Suyama2026": {
+    "PCL": [
+      "Pcp2",
+      "Calb1",
+      "Itpr1",
+      "Grid2",
+      "Aldoc",
+      "Prkcg",
+      "Homer3"
+    ],
+    "ML": [
+      "Kit",
+      "Lypd6",
+      "Sorcs3"
+    ],
+    "GCL": [
+      "Gabra6",
+      "Neurod1",
+      "Barhl1",
+      "Zic1",
+      "Zic2",
+      "Rbfox3",
+      "Cadps2",
+      "Etv1"
+    ],
+    "WM": [
+      "Mog",
+      "Mag",
+      "Cnp"
+    ],
+    "Astroglia": [
+      "Aldh1l1",
+      "Sox9",
+      "Slc1a3",
+      "S100b",
+      "Gja1",
+      "Gjb6",
+      "Aqp4",
+      "Fabp7",
+      "Hopx",
+      "Gpr37l1",
+      "Ednrb",
+      "Notch2"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+section,n_cells,n_purk,n_purk_rel,PCL_um,NN_um,amb_frac,warnings,n_FC,n_BG,n_Ambiguous_BG,n_Uncertain
+Zhuang-ABCA-3.015,23746,256,203,5.3,7.6,0.073,,43,480,74,365
+Zhuang-ABCA-3.004,23198,249,180,17.7,8.6,0.075,,79,416,101,793
+Zhuang-ABCA-4.003,23010,250,154,8.6,7.8,0.063,,102,480,102,469
+Zhuang-ABCA-3.003,21384,179,142,,8.6,0.069,high Uncertain fraction among Bergmann (0.62) - weak laminar geometry,52,287,49,631
+Zhuang-ABCA-3.005,20423,166,133,,8.0,0.078,high Uncertain fraction among Bergmann (0.66) - weak laminar geometry,46,272,75,747
+Zhuang-ABCA-3.011,19338,205,144,,8.1,0.071,,33,307,58,372
+Zhuang-ABCA-3.006,18115,169,142,15.2,8.4,0.083,,40,338,68,479
+Zhuang-ABCA-4.002,16801,115,72,,7.3,0.054,high Uncertain fraction among Bergmann (0.73) - weak laminar geometry,26,142,19,501
+Zhuang-ABCA-3.012,16393,208,153,6.1,7.9,0.071,,67,373,64,292
+Zhuang-ABCA-3.002,15863,122,93,,8.0,0.076,high Uncertain fraction among Bergmann (0.69) - weak laminar geometry,28,202,44,596
+Zhuang-ABCA-3.013,15347,198,159,12.3,9.5,0.086,,40,333,69,271
+Zhuang-ABCA-3.007,15287,114,93,7.6,8.0,0.057,,51,183,47,419
+Zhuang-ABCA-2.061,12510,97,67,,9.5,0.035,high Uncertain fraction among Bergmann (0.90) - weak laminar geometry,8,31,10,461
+Zhuang-ABCA-3.001,11792,95,80,,8.0,0.061,high Uncertain fraction among Bergmann (0.62) - weak laminar geometry,26,160,19,333
+Zhuang-ABCA-3.008,11064,112,90,11.2,9.6,0.069,high Uncertain fraction among Bergmann (0.69) - weak laminar geometry,29,123,34,406
+Zhuang-ABCA-3.009,10909,163,108,,10.0,0.066,,38,190,32,312
+Zhuang-ABCA-2.059,10721,252,176,7.7,10.4,0.038,,160,186,50,417
+Zhuang-ABCA-3.010,10598,116,80,18.9,10.3,0.059,high Uncertain fraction among Bergmann (0.65) - weak laminar geometry,40,142,36,411
+Zhuang-ABCA-3.019,10188,152,124,,9.3,0.1,,52,238,75,311
+Zhuang-ABCA-3.017,9844,132,104,17.3,9.6,0.052,high Uncertain fraction among Bergmann (0.62) - weak laminar geometry,76,118,49,397
+Zhuang-ABCA-3.016,9773,158,112,,10.4,0.067,,66,186,36,364
+Zhuang-ABCA-3.020,7654,78,58,,9.2,0.069,high Uncertain fraction among Bergmann (0.70) - weak laminar geometry,16,116,38,392
+Zhuang-ABCA-3.021,6705,91,70,5.0,9.5,0.076,,56,145,44,203
+Zhuang-ABCA-2.057,6422,84,61,7.1,10.5,0.051,high Uncertain fraction among Bergmann (0.64) - weak laminar geometry,15,106,26,260

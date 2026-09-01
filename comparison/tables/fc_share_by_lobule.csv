@@ -1,0 +1,76 @@
+level,unit,lobule,territory,animal,n_FC,n_BG,share_pct
+structure,AN,hemis.,hemispheres,all,36,945,3.67
+structure,CENT,II-III,anterior vermis (I-V),all,43,715,5.67
+structure,COPY,hemis.,hemispheres,all,27,323,7.71
+structure,CUL,IV-V,anterior vermis (I-V),all,65,843,7.16
+structure,DEC,VI,posterior vermis (VI-IX),all,24,450,5.06
+structure,FL,flocc.,flocculus/paraflocculus,all,2,71,2.74
+structure,FOTU,VII,posterior vermis (VI-IX),all,2,42,4.55
+structure,LING,I,anterior vermis (I-V),all,2,16,11.11
+structure,NOD,X,nodulus (X),all,49,282,14.8
+structure,PFL,flocc.,flocculus/paraflocculus,all,29,520,5.28
+structure,PRM,hemis.,hemispheres,all,15,487,2.99
+structure,PYR,VIII,posterior vermis (VI-IX),all,8,186,4.12
+structure,SIM,hemis.,hemispheres,all,19,817,2.27
+structure,UVU,IX,posterior vermis (VI-IX),all,30,358,7.73
+territory,anterior vermis (I-V),,anterior vermis (I-V),all,110,1574,6.53
+territory,flocculus/paraflocculus,,flocculus/paraflocculus,all,31,591,4.98
+territory,hemispheres,,hemispheres,all,97,2572,3.63
+territory,nodulus (X),,nodulus (X),all,49,282,14.8
+territory,posterior vermis (VI-IX),,posterior vermis (VI-IX),all,64,1036,5.82
+structure,AN,hemis.,hemispheres,Zhuang-ABCA-1,18,352,4.86
+structure,CENT,II-III,anterior vermis (I-V),Zhuang-ABCA-1,28,402,6.51
+structure,COPY,hemis.,hemispheres,Zhuang-ABCA-1,8,52,13.33
+structure,CUL,IV-V,anterior vermis (I-V),Zhuang-ABCA-1,45,412,9.85
+structure,DEC,VI,posterior vermis (VI-IX),Zhuang-ABCA-1,9,151,5.62
+structure,FL,flocc.,flocculus/paraflocculus,Zhuang-ABCA-1,1,33,2.94
+structure,FOTU,VII,posterior vermis (VI-IX),Zhuang-ABCA-1,0,7,0.0
+structure,LING,I,anterior vermis (I-V),Zhuang-ABCA-1,2,5,28.57
+structure,NOD,X,nodulus (X),Zhuang-ABCA-1,16,144,10.0
+structure,PFL,flocc.,flocculus/paraflocculus,Zhuang-ABCA-1,14,215,6.11
+structure,PRM,hemis.,hemispheres,Zhuang-ABCA-1,4,129,3.01
+structure,PYR,VIII,posterior vermis (VI-IX),Zhuang-ABCA-1,0,7,0.0
+structure,SIM,hemis.,hemispheres,Zhuang-ABCA-1,14,495,2.75
+structure,UVU,IX,posterior vermis (VI-IX),Zhuang-ABCA-1,3,81,3.57
+territory,anterior vermis (I-V),,anterior vermis (I-V),Zhuang-ABCA-1,75,819,8.39
+territory,flocculus/paraflocculus,,flocculus/paraflocculus,Zhuang-ABCA-1,15,248,5.7
+territory,hemispheres,,hemispheres,Zhuang-ABCA-1,44,1028,4.1
+territory,nodulus (X),,nodulus (X),Zhuang-ABCA-1,16,144,10.0
+territory,posterior vermis (VI-IX),,posterior vermis (VI-IX),Zhuang-ABCA-1,12,246,4.65
+structure,AN,hemis.,hemispheres,Zhuang-ABCA-2,0,14,0.0
+structure,CENT,II-III,anterior vermis (I-V),Zhuang-ABCA-2,1,35,2.78
+structure,COPY,hemis.,hemispheres,Zhuang-ABCA-2,0,1,0.0
+structure,CUL,IV-V,anterior vermis (I-V),Zhuang-ABCA-2,3,27,10.0
+structure,FL,flocc.,flocculus/paraflocculus,Zhuang-ABCA-2,0,6,0.0
+structure,LING,I,anterior vermis (I-V),Zhuang-ABCA-2,0,9,0.0
+structure,PFL,flocc.,flocculus/paraflocculus,Zhuang-ABCA-2,0,1,0.0
+structure,SIM,hemis.,hemispheres,Zhuang-ABCA-2,0,32,0.0
+territory,anterior vermis (I-V),,anterior vermis (I-V),Zhuang-ABCA-2,4,71,5.33
+territory,flocculus/paraflocculus,,flocculus/paraflocculus,Zhuang-ABCA-2,0,7,0.0
+territory,hemispheres,,hemispheres,Zhuang-ABCA-2,0,47,0.0
+structure,AN,hemis.,hemispheres,Zhuang-ABCA-3,15,518,2.81
+structure,CENT,II-III,anterior vermis (I-V),Zhuang-ABCA-3,14,278,4.79
+structure,COPY,hemis.,hemispheres,Zhuang-ABCA-3,19,269,6.6
+structure,CUL,IV-V,anterior vermis (I-V),Zhuang-ABCA-3,17,404,4.04
+structure,DEC,VI,posterior vermis (VI-IX),Zhuang-ABCA-3,15,299,4.78
+structure,FL,flocc.,flocculus/paraflocculus,Zhuang-ABCA-3,1,32,3.03
+structure,FOTU,VII,posterior vermis (VI-IX),Zhuang-ABCA-3,2,35,5.41
+structure,LING,I,anterior vermis (I-V),Zhuang-ABCA-3,0,2,0.0
+structure,NOD,X,nodulus (X),Zhuang-ABCA-3,33,138,19.3
+structure,PFL,flocc.,flocculus/paraflocculus,Zhuang-ABCA-3,14,248,5.34
+structure,PRM,hemis.,hemispheres,Zhuang-ABCA-3,7,286,2.39
+structure,PYR,VIII,posterior vermis (VI-IX),Zhuang-ABCA-3,8,179,4.28
+structure,SIM,hemis.,hemispheres,Zhuang-ABCA-3,5,242,2.02
+structure,UVU,IX,posterior vermis (VI-IX),Zhuang-ABCA-3,27,277,8.88
+territory,anterior vermis (I-V),,anterior vermis (I-V),Zhuang-ABCA-3,31,684,4.34
+territory,flocculus/paraflocculus,,flocculus/paraflocculus,Zhuang-ABCA-3,15,280,5.08
+territory,hemispheres,,hemispheres,Zhuang-ABCA-3,46,1315,3.38
+territory,nodulus (X),,nodulus (X),Zhuang-ABCA-3,33,138,19.3
+territory,posterior vermis (VI-IX),,posterior vermis (VI-IX),Zhuang-ABCA-3,52,790,6.18
+structure,AN,hemis.,hemispheres,Zhuang-ABCA-4,3,61,4.69
+structure,COPY,hemis.,hemispheres,Zhuang-ABCA-4,0,1,0.0
+structure,PFL,flocc.,flocculus/paraflocculus,Zhuang-ABCA-4,1,56,1.75
+structure,PRM,hemis.,hemispheres,Zhuang-ABCA-4,4,72,5.26
+structure,SIM,hemis.,hemispheres,Zhuang-ABCA-4,0,48,0.0
+territory,flocculus/paraflocculus,,flocculus/paraflocculus,Zhuang-ABCA-4,1,56,1.75
+territory,hemispheres,,hemispheres,Zhuang-ABCA-4,7,182,3.7

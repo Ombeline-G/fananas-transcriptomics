@@ -1,0 +1,8 @@
+pathway,n_genes,mean_log2FC,n_sig_genes
+Glutamate-glutamine cycle,5,-0.133,0
+Glycolysis,8,-0.181,0
+OXPHOS / mitochondria,9,-0.073,0
+Fatty-acid / lipid,6,-1.069,1
+Glutathione / antioxidant,5,-0.425,0
+Iron / metal handling,4,-0.297,1
+TCA / ketone support,4,0.359,0

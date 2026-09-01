@@ -1,0 +1,12 @@
+Dataset,Species,Modality,"Bergmann
+identity
+conserved","FC a
+distinct
+type?","Robust
+FC
+signature",What FC is
+Zhuang 2023,Mouse,MERFISH (spatial),Yes,No,No,displaced Bergmann
+Hao 2024,Mouse,Stereo-seq (spatial),Yes,No,No,displaced Bergmann
+Suyama 2026,Mouse,Xenium (spatial),Yes,No,No,displaced Bergmann
+Siletti 2023,Human,snRNA (non-spatial),Yes,No (1 cluster),No,Bergmann = single type
+Kozareva 2021,Mouse,snRNA (non-spatial),Yes,No (1 cluster),No,Bergmann = single type

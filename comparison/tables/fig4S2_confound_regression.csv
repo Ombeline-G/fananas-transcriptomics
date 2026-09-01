@@ -1,0 +1,7 @@
+dataset,score,n_FC,raw_delta,contam_adj_delta,contam_adj_p,full_adj_delta,full_adj_p,extra_covar
+MERFISH,astrocyte,362,0.173,0.15,1.5245676607098645e-11,0.131,6.2152428582476295e-09,depth_um
+MERFISH,bergmann,362,-0.005,-0.041,0.06603927393878696,-0.031,0.16680958172224059,depth_um
+Stereo-seq,astrocyte,89,-0.169,-0.195,2.1842350872306987e-13,-0.146,9.698264185820616e-08,nCount
+Stereo-seq,bergmann,89,-0.306,-0.275,2.0195191923412437e-09,-0.09,0.046741915068006575,nCount
+Xenium,astrocyte,44,0.217,0.078,0.19204037930312276,,,
+Xenium,bergmann,44,0.028,-0.169,0.005481342247811363,,,

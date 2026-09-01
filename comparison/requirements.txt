@@ -1,0 +1,26 @@
+# Versions used to produce the published figures and numbers (Python 3.13.7).
+# Pinned exactly: the analysis is deterministic and several scripts assert on
+# published values, so a version drift surfaces as a failed assert, not as a
+# silent change.
+pandas==2.3.0
+numpy==2.3.1
+scipy==1.16.0
+statsmodels==0.14.6
+scikit-learn==1.7.0
+matplotlib==3.10.3
+anndata==0.13.2
+fastparquet==2026.5.0
+pillow==11.2.1
+
+# Manuscript PDF build (figure_scripts/md2pdf.py) only
+reportlab==5.0.0
+pypdf==6.16.1
+
+# OPTIONAL — deliberately NOT installed in the environment that produced the
+# published figures; see notes/DEPOSIT_CHECKLIST.md:
+#   umap-learn   Figure3_identity.py falls back to the first two principal
+#                components when absent. The PUBLISHED panel 3d is that PCA
+#                fallback (axes read PC1/PC2). Installing this package changes
+#                what panel 3d shows.
+#   scanpy       required by build_atlas_siletti.py only; that builder's outputs
+#                (atlas_siletti_*.csv) ship as stable inputs.

@@ -13,7 +13,7 @@ Ce dossier contient l’unique analyse inter-datasets du projet.
 ## Sorties finales
 
 `figures/` contient les figures actives : Figure1–5 et les figures supplémentaires S1–S6 et S8–S16
-(S7 fusionnée dans S6 au point 27 de la review ; renumérotation à l'assemblage). Chaque figure existe
+(numéros de fichier : S7 fusionnée dans S6 au point 27 de la review ; le manuscrit, lui, numérote S1–S15 — voir « Numérotation des figures supplémentaires » ci-dessous). Chaque figure existe
 en PDF, SVG et PNG. Aucun autre dossier de figures ne fait foi.
 
 | Figure principale | Message | Statut |
@@ -22,7 +22,27 @@ en PDF, SVG et PNG. Aucun autre dossier de figures ne fait foi.
 | Figure 2 | Census position-first de la couche moléculaire | Validée |
 | Figure 3 | Identité Bergmann conservée | Validée |
 | Figure 4 | Absence de type FC distinct | Validée |
-| Figure 5 | Identité conservée, état sensible à la position (lean astrocytaire) | Validée |
+| Figure 5 | Identité conservée, état associé à la position (lean astrocytaire) | Validée |
+
+## Numérotation des figures supplémentaires (depuis le 2026-11-23)
+
+Le manuscrit numérote les figures supplémentaires **S1 à S15 sans trou** (l'ancienne S7 avait été
+fusionnée dans S6). **Les noms de fichiers et de scripts ne changent pas** (noms stables) : de S1 à S6
+ils coïncident avec le manuscrit ; au-delà, le numéro du fichier vaut celui du manuscrit + 1. Dans ce
+README, dans les scripts et dans le canonique jusqu'à l'addendum 62, « S8 » à « S16 » désignent les
+fichiers, donc les anciennes positions.
+
+| Manuscrit | Fichier (nom stable) | Script |
+|---|---|---|
+| Figure S7 | `FigureS8_persection_lean` | `FigureS6_S8_S10.py` |
+| Figure S8 | `FigureS9_regression` | `FigureS9_regression.py` |
+| Figure S9 | `FigureS10_threshold` | `FigureS10_threshold.py` |
+| Figure S10 | `FigureS11_annotation_free` | `FigureS11_annotation_free.py` |
+| Figure S11 | `FigureS12_atlases` | `FigureS12_atlases.py` |
+| Figure S12 | `FigureS13_lobules` | `FigureS13_lobules.py` |
+| Figure S13 | `FigureS14_continuum` | `FigureS14_continuum.py` |
+| Figure S14 | `FigureS15_vessels` | `FigureS15_vessels.py` |
+| Figure S15 | `FigureS16_swipe_examples` | `FigureS16_swipe_examples.py` |
 
 ## Reconstruction
 
@@ -42,12 +62,14 @@ python3 comparison/figure_scripts/build_de_canonical.py
 python3 comparison/figure_scripts/build_spillover.py
 python3 comparison/figure_scripts/build_equivalence.py
 python3 comparison/figure_scripts/build_equivalence_scoping.py
+python3 comparison/figure_scripts/build_selection_sensitivity.py
 python3 comparison/figure_scripts/build_normalized_depth.py
 python3 comparison/figure_scripts/build_fc_by_lobule.py
 python3 comparison/figure_scripts/build_lean_depth_continuum.py
 python3 comparison/figure_scripts/build_vascular_proximity.py
 python3 comparison/figure_scripts/build_annotation_free_identity.py
 python3 comparison/figure_scripts/build_dotplot.py
+python3 comparison/figure_scripts/build_functional_scores.py
 python3 comparison/figure_scripts/build_module_summary.py
 python3 comparison/figure_scripts/build_atlas_kozareva.py
 python3 comparison/figure_scripts/build_atlas_siletti.py
@@ -63,6 +85,7 @@ python3 comparison/figure_scripts/FigureS2_census_hao.py
 python3 comparison/figure_scripts/FigureS5_heterogeneity.py
 python3 comparison/figure_scripts/FigureS6_S8_S10.py
 python3 comparison/figure_scripts/FigureS9_regression.py
+python3 comparison/figure_scripts/FigureS10_threshold.py
 python3 comparison/figure_scripts/FigureS11_annotation_free.py
 python3 comparison/figure_scripts/FigureS12_atlases.py
 python3 comparison/figure_scripts/FigureS13_lobules.py
@@ -74,7 +97,7 @@ python3 comparison/figure_scripts/FigureS16_swipe_examples.py
 Contraintes d’ordre vérifiées dans les scripts : `FigureS4_signatures.py` s’exécute avant
 `Figure3_identity.py` (qui lit `fig6_all_contrasts_DE.csv`, produit par S4) et avant
 `FigureS3_confounds.py` (qui ajoute une colonne à `Figure6_signature_table.csv`, produit par S4) ;
-chaque builder précède la figure qui lit ses tables (S6/S8/S10 ← `build_module_summary.py`,
+chaque builder précède la figure qui lit ses tables (S6/S8 ← `build_functional_scores.py` puis `build_module_summary.py`, S10 ← `build_selection_sensitivity.py`,
 S11 ← `build_annotation_free_identity.py`, S12 ← `build_atlas_kozareva.py` +
 `build_atlas_siletti.py`, S13 ← `build_fc_by_lobule.py`, S14 ← `build_lean_depth_continuum.py`,
 S15 ← `build_vascular_proximity.py`) ; `build_full_de.py` consomme le gate et les paires
@@ -86,8 +109,8 @@ ici afin de garantir que la cohorte active reste limitée à Mouse1. Certaines t
 des entrées stables sans builder dans ce dossier et la reconstruction les laisse en place : census
 position-first Zhuang (`zhuang_ML_census_cells.parquet`, `zhuang_census_identity*.csv`), census Hao
 (`hao_ML_census_expr.parquet`, restreint en place par `restrict_hao_census_mouse1.py`),
-`robust_layers_zhuang.parquet`, `hao_fc_share_by_section.csv`, `fig7_functional_scores.csv`,
-`threshold_robustness.csv` et les verdicts atlas (`atlas_siletti_donor_verdict.csv`,
+`robust_layers_zhuang.parquet`, `hao_fc_share_by_section.csv`,
+et les verdicts atlas (`atlas_siletti_donor_verdict.csv`,
 `atlas_kozareva_sex_verdict.csv`).
 
 `build_swipe_rescore.py` et `compute_rescore_kappa.py` sont l’infrastructure de double lecture de la
@@ -96,8 +119,14 @@ validation swipe (κ de Cohen, review point 26) : le premier régénère l’éc
 pas partie de la reconstruction standard.
 
 Le manuscrit courant est `MANUSCRIPT.md`, construit depuis `CANONICAL_NUMBERS.md` et
-`notes/FIGURE_CAPTIONS_draft.md` ; les reviews sont consignées dans `REVIEW_LOG_Antonin_v1.md` et
-`REVIEW_LOG_Ombeline.md`. Le manuscrit ne contient plus de section interne « Open items » : le
+`notes/FIGURE_CAPTIONS_draft.md` ; les reviews sont consignées dans `REVIEW_LOG_Antonin_v1.md`, `REVIEW_LOG_Ombeline.md`,
+`REVIEW_LOG_Ombeline_v2.md`, `REVIEW_LOG_Antonin_v2.md` et `REVIEW_LOG_Martin.md`. `MANUSCRIPT.docx` est la
+version Word courante : révision de M. Oheim (`260909 Guère FC Transcriptomics_revMO.docx`, fichier
+d'entrée conservé tel quel) acceptée et corrigée le 2026-10-23 ; `MANUSCRIPT.md` porte le même texte
+(report du 2026-10-23, addendum 55 ; voir `REVIEW_LOG_Martin.md`).
+La copie d'envoi « Fananas cells lie within the Bergmann glial transcriptional continuum - evidence from
+cross-platform spatial transcriptomics_OmbelineGruere » (.docx et .pdf, racine du projet) est une copie
+conforme de `MANUSCRIPT.docx` du 2026-11-23 (après la review S. Alon, addenda 59–64) ; elle se remplace, elle ne se modifie pas. **Le `.pdf` de la racine est le fichier à soumettre (bioRxiv)** : c'est l'export PDF de ce Word par Microsoft Word (42 pages), et non plus une copie de `MANUSCRIPT_print.pdf`, qui reste la copie de relecture interne (en-tête « working draft »). Le manuscrit ne contient plus de section interne « Open items » : le
 suivi (dont le bloqueur de soumission κ second lecteur) vit dans `notes/OPEN_ITEMS.md`.
 
 La copie de lecture `MANUSCRIPT_print.pdf` se régénère depuis `MANUSCRIPT.md` avec :

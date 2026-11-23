@@ -2,7 +2,7 @@
 """Supplementary figures built from canonical data:
 S6  ONE cross-platform heatmap of all functional + metabolic modules (review\n    point 27; replaces the former S6/S7 pair; complete table:\n    TableS_functional_metabolic_modules.csv).
 S8  per-section paired lean (harmonised protocol) — pseudoreplication control.
-S10 robustness of the main statistics to the displacement threshold (Zhuang).
+S10 is no longer built here: see FigureS10_threshold.py (name of this file kept for the README).
 """
 import os, sys
 import numpy as np, pandas as pd
@@ -95,23 +95,5 @@ ax.set_ylim(-0.78, 0.85)
 save(fig, "FigureS8_persection_lean")
 plt.close(fig)
 
-# ================= S10 — threshold robustness =================
-tr = pd.read_csv(TAB + "/threshold_robustness.csv")
-tz = tr[tr.dataset == "zhuang"]
-fig, axes = plt.subplots(1, 3, figsize=(W2, 2.9), gridspec_kw=dict(wspace=0.55))
-specs = [("knn_FC_in_BG_pct", "kNN: % BG neighbours", (60, 105)),
-         ("dist_ratio", "centroid ratio", (0.9, 3.2)),
-         ("lean_FC_minus_BG", "astrocyte lean Δ", (-0.05, 0.42))]
-for ax, (col, lab, yl) in zip(axes, specs):
-    ax.plot(tz.threshold_um, tz[col], "-o", color=GROUP["FC"], lw=1.6, ms=4.5)
-
-    ax.set_xlabel("threshold (µm)")
-    ax.set_ylabel(lab)
-    ax.set_ylim(*yl)
-    ax.set_xticks([45, 60, 80, 100])
-for i, ax in enumerate(axes):
-    panel_letter(ax, "abc"[i], dx=-0.34, dy=1.14)
-fig.suptitle("MERFISH: main statistics vs displacement threshold", fontsize=10, fontweight="bold",
-             y=1.04)
-save(fig, "FigureS10_threshold")
-plt.close(fig)
+# S10 (selection-margin / manual-review sensitivity) is built by FigureS10_threshold.py from
+# tables/selection_sensitivity.csv (build_selection_sensitivity.py) since the November 2026 review.

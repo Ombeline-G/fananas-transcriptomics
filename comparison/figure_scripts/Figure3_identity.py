@@ -81,6 +81,19 @@ axB2 = fig.add_subplot(gs[0, 4:6])
 axC1 = fig.add_subplot(gs[1, 0:3])
 axC2 = fig.add_subplot(gs[1, 3:6])
 axU = [fig.add_subplot(gs[2, 2 * i:2 * i + 2]) for i in range(3)]
+# Panels a and b share one dot spacing (review M.O./O.G. 2026-10-23): panel b's dotplot axis is
+# resized so that one dot column occupies the same width as in panel a; the scatter keeps its
+# right edge and takes the remaining width.
+XPAD = 0.6
+_a, _b1, _b2 = axA.get_position(), axB1.get_position(), axB2.get_position()
+_unit = 0.92 * _a.width / (len(DS_ORDER) * 2 - 1 + 2 * XPAD)      # figure width of one dot column
+_wA = _unit * (len(DS_ORDER) * 2 - 1 + 2 * XPAD)
+_wB1 = _unit * (len(DS_ORDER) - 1 + 2 * XPAD)
+_gapA, _gapB = 0.035, 0.065                                        # figure fractions
+axA.set_position([_a.x0, _a.y0, _wA, _a.height])
+axB1.set_position([_a.x0 + _wA + _gapA, _b1.y0, _wB1, _b1.height])
+_xB2 = _a.x0 + _wA + _gapA + _wB1 + _gapB
+axB2.set_position([_xB2, _b2.y0, _b2.x1 - _xB2, _b2.height])
 
 
 def dot(ax, grps, xlabels, ds_names=True, seps=True, xpad=0.6):
@@ -110,14 +123,14 @@ def dot(ax, grps, xlabels, ds_names=True, seps=True, xpad=0.6):
 
 
 # ---------- a: signature defined without FC ----------
-dot(axA, ["BG", "OtherCBastro"], ["BG", "parenchymal\nastrocytes"] * 3)
+dot(axA, ["BG", "OtherCBastro"], ["BG", "parench.\nastrocytes"] * 3, xpad=XPAD)
 axA.set_yticks(range(len(GENES)))
 axA.set_yticklabels([f"$\\it{{{g}}}$" for g in GENES], fontsize=8)
-axA.set_title("Bergmann signature — defined without FC", fontsize=9, loc="left", pad=14)
+axA.set_title("Bergmann signature\n(defined without FC)", fontsize=9, loc="left", pad=6)
 panel_letter(axA, "a", dx=-0.14, dy=1.10)
 
 # ---------- b: FC independently reproduce it ----------
-dot(axB1, ["FC"], ["", "", ""], ds_names=False, seps=False, xpad=1.0)
+dot(axB1, ["FC"], ["", "", ""], ds_names=False, seps=False, xpad=XPAD)
 axB1.set_yticks(range(len(GENES))); axB1.set_yticklabels([])
 axB1.set_title("FC\n(MERFISH · Stereo-seq · Xenium)", fontsize=7.5, loc="left", pad=6)
 panel_letter(axB1, "b", dx=-0.16, dy=1.10)
@@ -128,8 +141,10 @@ axB2.axhline(0, c="#e1e0d9", lw=0.75); axB2.axvline(0, c="#e1e0d9", lw=0.75)
 axB2.set_xlim(lim); axB2.set_ylim(lim)
 axB2.set_xlabel("Δlog2, BG vs parenchymal\n(signature definition — no FC)", fontsize=7.5)
 axB2.set_ylabel("Δlog2, FC vs parenchymal", fontsize=7.2, labelpad=2)
-axB2.text(0.04, 0.97, f"r = {r:.2f} ({int(ok.sum())} gene × dataset pairs)\ny: independent FC contrast",
-          transform=axB2.transAxes, fontsize=7.2, va="top")
+# annotation above the panel, outside the data area: nothing is drawn under the text
+# (review S. Alon, November 2026 — "data points overlap the figure text")
+axB2.set_title(f"r = {r:.2f} (n = {int(ok.sum())} pairs)\ny: independent FC contrast",
+               fontsize=7.2, fontweight="normal", loc="right", pad=6)
 
 # ---------- c: quantitative identity (kNN + centroid ratios) ----------
 knn = pd.read_csv(TAB + "/fig2_knn_fc_in_bergmann.csv").set_index("key").loc[DS_ORDER]
@@ -137,10 +152,10 @@ assert knn.n_FC.astype(int).tolist() == [362, 89, 44]   # 4 animals (ABCA-1 inte
 assert np.allclose(knn.frac_BG, [98.9871086, 68.0898876, 88.4848485], atol=1e-4)
 assert np.allclose(knn.base_BG, [76.1070800, 61.3526570, 50.2480706], atol=1e-4)
 x = np.arange(3); w = 0.36
-axC1.bar(x - w / 2, knn.frac_BG, w, color=GROUP["BG"], label="observed: neighbours that are BG")
+axC1.bar(x - w / 2, knn.frac_BG, w, color=GROUP["BG"], label="observed: neighbors that are BG")
 axC1.bar(x + w / 2, knn.base_BG, w, color="#b8b6b0", label="chance: BG share of astroglia")
 axC1.set_xticks(x); axC1.set_xticklabels([DSL[k].replace(" (", "\n(") for k in DS_ORDER], fontsize=8)
-axC1.set_ylabel("% of FC's 15 nearest\nastroglial neighbours")
+axC1.set_ylabel("% of FC's 15 nearest\nastroglial neighbors")
 axC1.set_ylim(0, 132)
 axC1.legend(frameon=False, fontsize=7, loc="upper left", bbox_to_anchor=(0.01, 1.00))
 panel_letter(axC1, "c", dx=-0.20, dy=1.12)

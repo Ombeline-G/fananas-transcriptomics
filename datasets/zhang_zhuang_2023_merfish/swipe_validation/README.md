@@ -36,3 +36,20 @@ hors-ligne) : **406 candidats** sur 14 sections, mêmes critères, même interfa
 (lit `../layer_segmentation/FC_candidates_ABCA1_for_swipe.csv` + `BG_assignments_ABCA1.csv`).
 Après swipe : intégration ABCA-1 par le pipeline identique (voir CANONICAL, extension
 « Intégration ABCA-1 post-swipe »).
+
+## Bande 35–45 µm (review S. Alon, novembre 2026)
+
+Analyse de sensibilité à la marge de sélection : les Bergmann du masque ML situées entre 35 et 45 µm
+de la PCL n'avaient jamais été relues (la marge de l'étude est 45 µm). Ouvrir **`swipe_band35.html`**
+(double-clic, hors-ligne) : **352 candidats** sur 33 sections des quatre animaux (ABCA-1 : 236 ·
+ABCA-2 : 4 · ABCA-3 : 94 · ABCA-4 : 18), mêmes critères, même interface, même aveuglement (géométrie
+seule), tri par confiance décroissante. Décisions stockées séparément
+(`bgml_swipe_decisions_v3seg_band35`) ; export → **`fc_decisions_band35.csv`**, à déposer dans ce
+dossier, toutes décisions résolues en oui/non. Données régénérables :
+`python gen_swipe_from_segmentation.py band35` (écrit aussi
+`../layer_segmentation/FC_candidates_band35_45_for_swipe.csv`).
+
+**Swipe fait le 2026-11-23 (O.G.) : 74 acceptées / 352** (ABCA-1 26/236 · ABCA-2 1/4 · ABCA-3 37/94 ·
+ABCA-4 10/18), décisions dans `fc_decisions_band35.csv`. Ces 74 cellules n'entrent que dans la cohorte
+de sensibilité à 35 µm (`comparison/figure_scripts/build_selection_sensitivity.py`, Figure S10) ; la
+cohorte de l'étude reste celle des 362 FC à ≥45 µm (canonique, addendum 60).

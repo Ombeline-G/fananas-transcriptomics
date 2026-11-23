@@ -17,7 +17,7 @@ position-associated astrocytic expression shift is reported as a secondary findi
 | `comparison/rescore_package/` | Second-rater validation: mini swipe tools, both raters' decision files, official merge, Cohen's κ pipeline |
 | `comparison/requirements.txt` | Pinned production environment (Python 3.13.7) |
 | `charte_graphique/` | Figure style single source of truth (palette, mplstyle), imported by `figstyle.py` |
-| `datasets/*/swipe_validation/` | Interactive swipe tools, generators, and per-candidate manual decisions (1,152 candidates) |
+| `datasets/*/swipe_validation/` | Interactive swipe tools, generators, and per-candidate manual decisions (1,152 candidates, plus the 352 candidates of the MERFISH 35–45 µm band reviewed for the selection-margin sensitivity analysis) |
 | `datasets/*/README.md` | Per-dataset local pipeline documentation and data provenance |
 
 ## Reproducing
@@ -38,12 +38,30 @@ Two deliberate environment notes, declared for reproducibility:
 - **`scanpy` is not part of the production environment.** `build_atlas_siletti.py` is therefore
   not re-executable as-is; its outputs (`atlas_*_verdict.csv`, …) ship in `comparison/tables/`
   as stable inputs.
+- **`build_selection_sensitivity.py` needs the MERFISH segmentation assignments and expression
+  matrices**, which are not redistributed here. Its outputs (`selection_sensitivity.csv`,
+  `selection_sensitivity_DE_hits.csv`) and its expression cache
+  (`zhuang_sensitivity_extra_expr.parquet`) ship in `comparison/tables/`, so
+  `FigureS10_threshold.py` runs as-is.
+
+## Supplementary figure numbering
+
+Script and output file names are stable and keep their original numbers. The manuscript numbers
+the supplementary figures S1–S15 without a gap (a former S7 was merged into S6): files `FigureS1`
+to `FigureS6` match the manuscript, and files `FigureS8` to `FigureS16` are manuscript Figures S7
+to S15 (file number = manuscript number + 1). For example, the selection-margin and
+manual-review sensitivity analysis is manuscript Figure S9, built by `FigureS10_threshold.py`.
+The full correspondence table is in `comparison/README.md`.
 
 ## Manual validation (swipe)
 
 Every geometric FC candidate was accepted or rejected in a dedicated offline interface
 (`datasets/*/swipe_validation/swipe*.html`; geometry only, blinded to expression). All
-per-candidate decisions are included (`fc_decisions_*.csv`). `comparison/rescore_package/`
+per-candidate decisions are included (`fc_decisions_*.csv`). The 352 MERFISH candidates lying
+35–45 µm above the Purkinje layer, which the 45-µm selection margin had kept out of the original
+review, were reviewed afterwards with the same tool and criteria (`swipe_band35.html`,
+`fc_decisions_band35.csv`; 74 accepted); they enter only the 35-µm cohort of the selection-margin
+sensitivity analysis, and the cohort of the study is unchanged. `comparison/rescore_package/`
 contains the second-rater re-scoring of a seed-fixed, stratified 15% sample (173 candidates):
 the four restricted tools, both raters' decisions, the official merge (`rater2_all.csv`), and
 `comparison/figure_scripts/compute_rescore_kappa.py`, which reproduces the inter-rater

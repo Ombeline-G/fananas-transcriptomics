@@ -44,21 +44,22 @@ axC = fig.add_subplot(gs[1, 0]); axD = fig.add_subplot(gs[1, 1])
 
 # ---------- a: design schematic ----------
 axA.set_xlim(0, 1); axA.set_ylim(0, 1); axA.axis("off")
-def box(x, y, w, h, text, fc, fs=7.2, tc="#111111"):
+def box(x, y, w, h, text, fc, fs=7.0, tc="#111111"):
     axA.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0.012",
-                                 facecolor=fc, edgecolor="#555555", lw=0.7))
+                                 facecolor=fc, edgecolor="#555555", lw=0.7, clip_on=False))
     axA.text(x + w / 2, y + h / 2, text, ha="center", va="center", fontsize=fs, color=tc)
-box(0.03, 0.80, 0.42, 0.13, "BG reference\nsomata in the PCL (n=800)", "#d9e6f7")
-box(0.03, 0.62, 0.42, 0.13, "Astro-NT reference\ninside the WM (n=800)", "#fbeccc")
-box(0.03, 0.44, 0.42, 0.13, "Astro-CB reference\ninside the GCL (n=800)", "#d9f0e6")
-box(0.58, 0.57, 0.39, 0.22, "4 classifiers\n× 2 gene spaces\n(full / contamination-free)", "#efefef")
-box(0.30, 0.10, 0.48, 0.16, "519 ML astroglia\nlabels withheld → classified", "#f4d7d7")
+# box widths sized to their text (review O.G. 2026-10-23: labels overflowed the boxes)
+box(0.03, 0.80, 0.50, 0.13, "BG reference\nsomata in the PCL (n=800)", "#d9e6f7")
+box(0.03, 0.62, 0.50, 0.13, "Astro-NT reference\ninside the WM (n=800)", "#fbeccc")
+box(0.03, 0.44, 0.50, 0.13, "Astro-CB reference\ninside the GCL (n=800)", "#d9f0e6")
+box(0.58, 0.57, 0.39, 0.22, "4 classifiers\n× 2 gene spaces\n(full / contam.-free)", "#efefef")
+box(0.20, 0.12, 0.64, 0.16, "519 ML astroglia\nlabels withheld → classified", "#f4d7d7")
 for y0 in (0.865, 0.685, 0.505):
-    axA.add_patch(FancyArrowPatch((0.455, y0), (0.575, 0.70), arrowstyle="-|>",
-                                  mutation_scale=9, color="#555555", lw=0.9))
-axA.add_patch(FancyArrowPatch((0.77, 0.565), (0.60, 0.27), arrowstyle="-|>",
-                              mutation_scale=10, color="#555555", lw=1.0))
-axA.text(0.24, 0.30, "0 ML cells\nused for training", fontsize=8.2, fontweight="bold",
+    axA.add_patch(FancyArrowPatch((0.535, y0), (0.575, 0.70), arrowstyle="-|>",
+                                  mutation_scale=9, color="#555555", lw=0.9, clip_on=False))
+axA.add_patch(FancyArrowPatch((0.78, 0.565), (0.62, 0.29), arrowstyle="-|>",
+                              mutation_scale=10, color="#555555", lw=1.0, clip_on=False))
+axA.text(0.52, 0.045, "0 ML cells used for training", fontsize=7.8, fontweight="bold",
          color="#8a2525", ha="center", va="center")
 panel_letter(axA, "a", dx=0.0, dy=1.02)
 

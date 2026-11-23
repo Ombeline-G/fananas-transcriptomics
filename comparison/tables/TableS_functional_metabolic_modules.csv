@@ -1,31 +1,31 @@
 module_class,module,dataset,n_genes,delta,pval,padj,estimator,cross_platform_verdict
-functional,K+/water homeostasis,MERFISH,1,0.4136953353881836,1.053284267255965e-07,4.062667887987294e-07,"unmatched FC-BG module z, cell-level Mann-Whitney",single-platform (Zhuang)
-functional,Gap-junction coupling,MERFISH,1,0.1052739769220352,0.1152035575918614,0.1637103186831715,"unmatched FC-BG module z, cell-level Mann-Whitney",no significant dataset
-functional,Ca2+/glutamate-receptor,MERFISH,1,-0.1483784466981887,0.1003659637987423,0.1594047660332967,"unmatched FC-BG module z, cell-level Mann-Whitney",no significant dataset
-functional,Radial fibre/cytoskeleton,MERFISH,1,0.7957543134689331,1.434194362114032e-15,1.9361623888539432e-14,"unmatched FC-BG module z, cell-level Mann-Whitney",significant but OPPOSITE signs
-functional,ECM/adhesion,MERFISH,1,-0.4870695471763611,2.1034517203952957e-10,1.4198299112668247e-09,"unmatched FC-BG module z, cell-level Mann-Whitney","concordant (2/3 datasets, same sign)"
-functional,Bergmann trophic/identity,MERFISH,5,0.1484910994768142,3.903054962471912e-06,1.1709164887415735e-05,"unmatched FC-BG module z, cell-level Mann-Whitney",significant but OPPOSITE signs
-functional,Reactive/immune,MERFISH,2,0.5574389100074768,1.1894610487010612e-16,3.2115448314928645e-15,"unmatched FC-BG module z, cell-level Mann-Whitney",significant but OPPOSITE signs
-functional,Glutamate clearance,Stereo-seq,4,-0.2395306543061069,0.0002144804352647,0.0005790971752147,"unmatched FC-BG module z, cell-level Mann-Whitney",single-platform (Hao)
-functional,K+/water homeostasis,Stereo-seq,4,-0.0673789309287684,0.3984109156644981,0.4305154488563577,"unmatched FC-BG module z, cell-level Mann-Whitney",single-platform (Zhuang)
-functional,Gap-junction coupling,Stereo-seq,2,0.0125917311716487,0.3986254156077385,0.4305154488563577,"unmatched FC-BG module z, cell-level Mann-Whitney",no significant dataset
-functional,Ca2+/glutamate-receptor,Stereo-seq,6,-0.0684462428982223,0.1422597081337459,0.1920506059805569,"unmatched FC-BG module z, cell-level Mann-Whitney",no significant dataset
-functional,Energy/lactate metabolism,Stereo-seq,6,-0.3402644774008865,1.4980698228778226e-09,6.741314202950203e-09,"unmatched FC-BG module z, cell-level Mann-Whitney",single-platform (Hao)
-functional,Lipid/cholesterol,Stereo-seq,5,-0.399574858550433,8.179681161556344e-11,7.36171304540071e-10,"unmatched FC-BG module z, cell-level Mann-Whitney",single-platform (Hao)
-functional,Radial fibre/cytoskeleton,Stereo-seq,4,-0.1808280566928885,0.0004263033401231,0.0009656204704707,"unmatched FC-BG module z, cell-level Mann-Whitney",significant but OPPOSITE signs
-functional,ECM/adhesion,Stereo-seq,5,-0.2681069283378738,1.7540066399449833e-07,5.919772409814319e-07,"unmatched FC-BG module z, cell-level Mann-Whitney","concordant (2/3 datasets, same sign)"
-functional,Bergmann trophic/identity,Stereo-seq,7,-0.2995947379034445,2.7121472390582885e-10,1.464559509091476e-09,"unmatched FC-BG module z, cell-level Mann-Whitney",significant but OPPOSITE signs
-functional,Reactive/immune,Stereo-seq,6,-0.1090818008548179,0.0004291646535425,0.0009656204704707,"unmatched FC-BG module z, cell-level Mann-Whitney",significant but OPPOSITE signs
-functional,Glutamate clearance,Xenium,1,0.177990318548392,0.464436745399052,0.4822996971451694,"unmatched FC-BG module z, cell-level Mann-Whitney",single-platform (Hao)
-functional,K+/water homeostasis,Xenium,3,0.1168931331066386,0.1772979673144139,0.222910489400234,"unmatched FC-BG module z, cell-level Mann-Whitney",single-platform (Zhuang)
-functional,Gap-junction coupling,Xenium,2,0.1814991850977031,0.0399034997405665,0.0828764994611767,"unmatched FC-BG module z, cell-level Mann-Whitney",no significant dataset
-functional,Ca2+/glutamate-receptor,Xenium,5,0.1127409249208344,0.26567418335706,0.3118783891582879,"unmatched FC-BG module z, cell-level Mann-Whitney",no significant dataset
-functional,Energy/lactate metabolism,Xenium,6,-0.0362862269943921,0.6766787966306103,0.6766787966306103,"unmatched FC-BG module z, cell-level Mann-Whitney",single-platform (Hao)
-functional,Lipid/cholesterol,Xenium,1,-0.2522127421211539,0.0947343110032872,0.1594047660332967,"unmatched FC-BG module z, cell-level Mann-Whitney",single-platform (Hao)
-functional,Radial fibre/cytoskeleton,Xenium,3,0.1850998513948643,0.1133556994410031,0.1637103186831715,"unmatched FC-BG module z, cell-level Mann-Whitney",significant but OPPOSITE signs
-functional,ECM/adhesion,Xenium,3,-0.1430683202764845,0.0764076641360805,0.137533795444945,"unmatched FC-BG module z, cell-level Mann-Whitney","concordant (2/3 datasets, same sign)"
-functional,Bergmann trophic/identity,Xenium,7,0.1362219596155004,0.1816307691409314,0.222910489400234,"unmatched FC-BG module z, cell-level Mann-Whitney",significant but OPPOSITE signs
-functional,Reactive/immune,Xenium,4,0.2233558386441158,0.0476209379727482,0.0918403803760145,"unmatched FC-BG module z, cell-level Mann-Whitney",significant but OPPOSITE signs
+functional,K+/water homeostasis,MERFISH,1,0.2670451998710632,5.913998234516584e-06,1.0349496910404024e-05,"unmatched FC-BG module z, cell-level Mann-Whitney",single-platform (MERFISH)
+functional,Gap-junction coupling,MERFISH,1,0.084556296467781,0.1207083111893636,0.1408263630542575,"unmatched FC-BG module z, cell-level Mann-Whitney",no significant dataset
+functional,Ca2+/glutamate-receptor,MERFISH,1,-0.0372412465512752,0.5379610145508862,0.5379610145508862,"unmatched FC-BG module z, cell-level Mann-Whitney",no significant dataset
+functional,Radial fibre/cytoskeleton,MERFISH,1,0.6260969638824463,4.412770733319341e-19,1.544469756661769e-18,"unmatched FC-BG module z, cell-level Mann-Whitney",significant but OPPOSITE signs
+functional,ECM/adhesion,MERFISH,1,-0.4514186978340149,4.029006371711426e-16,9.401014867326665e-16,"unmatched FC-BG module z, cell-level Mann-Whitney","concordant (2/3 datasets, same sign)"
+functional,Bergmann trophic/identity,MERFISH,5,0.0969682410359382,1.3365335334948596e-05,1.8711469468928035e-05,"unmatched FC-BG module z, cell-level Mann-Whitney",significant but OPPOSITE signs
+functional,Reactive/immune,MERFISH,2,0.3946728110313415,1.0174157338254652e-19,7.121910136778257e-19,"unmatched FC-BG module z, cell-level Mann-Whitney",significant but OPPOSITE signs
+functional,Glutamate clearance,Stereo-seq,4,-0.2395306543783762,0.0002144804352647,0.0004289608705294,"unmatched FC-BG module z, cell-level Mann-Whitney",single-platform (Stereo-seq)
+functional,K+/water homeostasis,Stereo-seq,4,-0.067378930968964,0.3984109156644981,0.3986254156077385,"unmatched FC-BG module z, cell-level Mann-Whitney",single-platform (MERFISH)
+functional,Gap-junction coupling,Stereo-seq,2,0.0125917311616149,0.3986254156077385,0.3986254156077385,"unmatched FC-BG module z, cell-level Mann-Whitney",no significant dataset
+functional,Ca2+/glutamate-receptor,Stereo-seq,6,-0.0684462429520725,0.1422597081337459,0.1778246351671823,"unmatched FC-BG module z, cell-level Mann-Whitney",no significant dataset
+functional,Energy/lactate metabolism,Stereo-seq,6,-0.340264477518358,1.4980698228778226e-09,4.993566076259409e-09,"unmatched FC-BG module z, cell-level Mann-Whitney",single-platform (Stereo-seq)
+functional,Lipid/cholesterol,Stereo-seq,5,-0.3995748586592194,8.179681161556344e-11,8.179681161556344e-10,"unmatched FC-BG module z, cell-level Mann-Whitney",single-platform (Stereo-seq)
+functional,Radial fibre/cytoskeleton,Stereo-seq,4,-0.1808280567837051,0.0004263033401231,0.0006130923622036,"unmatched FC-BG module z, cell-level Mann-Whitney",significant but OPPOSITE signs
+functional,ECM/adhesion,Stereo-seq,5,-0.268106928450829,1.7540066399449833e-07,4.385016599862459e-07,"unmatched FC-BG module z, cell-level Mann-Whitney","concordant (2/3 datasets, same sign)"
+functional,Bergmann trophic/identity,Stereo-seq,7,-0.2995947379794885,2.7121472390582885e-10,1.356073619529144e-09,"unmatched FC-BG module z, cell-level Mann-Whitney",significant but OPPOSITE signs
+functional,Reactive/immune,Stereo-seq,6,-0.1090818009800305,0.0004291646535425,0.0006130923622036,"unmatched FC-BG module z, cell-level Mann-Whitney",significant but OPPOSITE signs
+functional,Glutamate clearance,Xenium,1,0.1779903185933343,0.464436745399052,0.5160408282211689,"unmatched FC-BG module z, cell-level Mann-Whitney",single-platform (Stereo-seq)
+functional,K+/water homeostasis,Xenium,3,0.1168931331245552,0.1772979673144139,0.2594725273441878,"unmatched FC-BG module z, cell-level Mann-Whitney",single-platform (MERFISH)
+functional,Gap-junction coupling,Xenium,2,0.1814991851308647,0.0399034997405665,0.2267113988820062,"unmatched FC-BG module z, cell-level Mann-Whitney",no significant dataset
+functional,Ca2+/glutamate-receptor,Xenium,5,0.1127409249422768,0.26567418335706,0.332092729196325,"unmatched FC-BG module z, cell-level Mann-Whitney",no significant dataset
+functional,Energy/lactate metabolism,Xenium,6,-0.0362862270076045,0.6766787966306103,0.6766787966306103,"unmatched FC-BG module z, cell-level Mann-Whitney",single-platform (Stereo-seq)
+functional,Lipid/cholesterol,Xenium,1,-0.2522127421653369,0.0947343110032872,0.2267113988820062,"unmatched FC-BG module z, cell-level Mann-Whitney",single-platform (Stereo-seq)
+functional,Radial fibre/cytoskeleton,Xenium,3,0.1850998515014769,0.1133556994410031,0.2267113988820062,"unmatched FC-BG module z, cell-level Mann-Whitney",significant but OPPOSITE signs
+functional,ECM/adhesion,Xenium,3,-0.1430683203019997,0.0764076641360805,0.2267113988820062,"unmatched FC-BG module z, cell-level Mann-Whitney","concordant (2/3 datasets, same sign)"
+functional,Bergmann trophic/identity,Xenium,7,0.1362219596405929,0.1816307691409314,0.2594725273441878,"unmatched FC-BG module z, cell-level Mann-Whitney",significant but OPPOSITE signs
+functional,Reactive/immune,Xenium,4,0.2233558389378492,0.0476209379727482,0.2267113988820062,"unmatched FC-BG module z, cell-level Mann-Whitney",significant but OPPOSITE signs
 metabolic,Glycolysis,Xenium,10,0.0583089584563928,0.7418974469496789,0.9552646777013544,"capture-matched pairs, paired Wilcoxon",no significant dataset
 metabolic,Lactate shuttle (MCT),Xenium,4,-0.0304647204863181,0.8930760236810261,0.9552646777013544,"capture-matched pairs, paired Wilcoxon",no significant dataset
 metabolic,Glycogen metabolism,Xenium,3,0.2005842185303127,0.1388352160281985,0.9552646777013544,"capture-matched pairs, paired Wilcoxon",no significant dataset

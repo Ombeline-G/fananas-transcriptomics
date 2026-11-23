@@ -10,8 +10,39 @@ allcb=pd.read_parquet(f"{ZH}/cb_cells_multivote.parquet")
 # default: the 20 kept ABCA-2/3/4 sections (240 candidates). `abca1` argument: the fourth
 # animal (review point 35) — candidates from FC_candidates_ABCA1_for_swipe.csv (406, already
 # >=45um + declumped), BG points from BG_assignments_ABCA1.csv, same masks/section format.
+# `band35` argument (review S. Alon, November 2026): the Bergmann-class ML somata lying 35-45 um
+# above the PCL in the 20 kept sections + the 14 swiped ABCA-1 sections, i.e. the band a 35-um
+# margin would add to the candidate pool. Same rule as the segmentation, margin lowered to 35 um:
+# ML Bergmann somata >=35 um, declumped at that margin, of which only the 35-45 um band is new
+# (the >=45 um candidates were already reviewed). Confidence = the segmentation's FC formula
+# evaluated with the 35-um margin. Candidates written to FC_candidates_band35_45_for_swipe.csv.
 MODE = sys.argv[1].lower() if len(sys.argv) > 1 else "kept"
-if MODE == "abca1":
+SOURCE = "GCL-anchored segmentation, FC>=45um from PCL, declumped"
+if MODE == "band35":
+    from scipy.spatial import cKDTree
+    MARGIN, DECLUMP_R, DECLUMP_NB = 35.0, 0.035, 2      # um, mm, n (segment_cerebellar_layers.py)
+    kept=pd.read_csv(LS+"/BG_assignments_kept.csv")
+    a1=pd.read_csv(LS+"/BG_assignments_ABCA1.csv")
+    a1=a1[a1['section'].isin(set(pd.read_csv(LS+"/FC_candidates_ABCA1_for_swipe.csv")['section']))]
+    A=pd.concat([kept,a1],ignore_index=True).drop_duplicates('cell_label').set_index('cell_label')
+    amb=A['region']=='Ambiguous_BG'
+    ml=A[(A['region']=='FC')|(amb&(A['dist_to_PCL_um']>=45))|(amb&(A['confidence']>0.30)&(A['dist_to_PCL_um']<45))]
+    ml=ml[ml['dist_to_PCL_um']>=MARGIN]
+    ok=[]
+    for _,g in ml.groupby('section'):
+        xy=g[['x','y']].values; tt=cKDTree(xy)
+        nb=np.array([len(tt.query_ball_point(q,DECLUMP_R))-1 for q in xy])
+        ok+=list(g.index[nb<=DECLUMP_NB])
+    CAND=ml.loc[ok]; CAND=CAND[CAND['dist_to_PCL_um']<45].copy()
+    depth=(CAND['dist_to_PCL_um']-MARGIN)/1000.0
+    base=np.minimum(1.0,0.5+depth/0.05)
+    geomf=np.where(CAND['purk_support']>=2,np.minimum(1.0,0.6+0.1*np.minimum(CAND['purk_support'],4)),0.6)
+    CAND['confidence']=np.round(base*geomf,2)
+    CAND.reset_index().to_csv(LS+"/FC_candidates_band35_45_for_swipe.csv",index=False)
+    KEEP=sorted(set(CAND['section']))
+    TAG, DSLABEL = "band35", "Zhuang ABCA-1 to -4, 35-45 um band (segmentation)"
+    SOURCE = "GCL-anchored segmentation, Bergmann-class ML somata 35-45um from PCL, declumped at the 35-um margin"
+elif MODE == "abca1":
     A=pd.read_csv(LS+"/BG_assignments_ABCA1.csv").set_index('cell_label')
     CAND=pd.read_csv(LS+"/FC_candidates_ABCA1_for_swipe.csv").set_index('cell_label')
     KEEP=sorted(set(CAND['section']))
@@ -68,7 +99,7 @@ for sec in KEEP:
             support=int(r['purk_support'])))
 cards.sort(key=lambda c:-c['conf'])   # highest-confidence first
 data=dict(meta=dict(dataset=DSLABEL,zoom_um=250,n=len(cards),
-                    source="GCL-anchored segmentation, FC>=45um from PCL, declumped"),
+                    source=SOURCE),
           sections=sections, cards=cards)
 open(OUT+f"/swipe_{TAG}.js","w",encoding="utf-8").write("window.SWIPE_DATA="+json.dumps(data)+";")
 open(OUT+f"/swipe_{TAG}.json","w",encoding="utf-8").write(json.dumps(data))
